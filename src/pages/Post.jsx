@@ -2,26 +2,41 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-import CommentCard from '../components/card/comment/CommentCard';
+import CommentList from '../components/list/comment/CommentList';
 import img2 from '../assets/image/img2.jpg';
 
 const Post = () => {
   const [post, setPost] = useState();
+  const [comments, setComments] = useState();
 
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/${id}`).then((res) => {
-      setPost(res.data);
-    });
+    // 블로그 글 상세 정보를 불러오는 함수
+    const getPostDetail = () => {
+      axios.get(`http://localhost:3001/posts/${id}`).then((res) => {
+        setPost(res.data);
+      });
+    };
+
+    // 댓글들의 정보를 불러오는 함수
+    const getComments = () => {
+      axios
+        .get(`http://localhost:3001/comments?postId=${id}`)
+        .then((res) => setComments(res.data));
+    };
+
+    getPostDetail();
+    getComments();
   }, []);
 
-  if (!post) {
+  if (!post || !comments) {
     return;
   }
 
   return (
     <>
+      {/* 포스트 헤더 영역 */}
       <section className="post-header">
         <h2 className="post-title">{post.title}</h2>
         <div className="post-date-like">
@@ -37,18 +52,8 @@ const Post = () => {
         <div className="content-main-text">{post.content}</div>
       </section>
 
-      <section>
-        {post.comments.map((comment) => {
-          return (
-            <CommentCard
-              key={comment.id}
-              author={comment.author}
-              content={comment.content}
-              createdAt={comment.createdAt}
-            />
-          );
-        })}
-      </section>
+      {/* 댓글 목록 */}
+      <CommentList comments={comments} />
     </>
   );
 };
