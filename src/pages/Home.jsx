@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Card from '../components/card/Card';
+import PostList from '../components/list/post/PostList';
 
 const Home = () => {
   const [posts, setPosts] = useState();
@@ -18,18 +18,7 @@ const Home = () => {
 
   return (
     <>
-      {posts.map((post) => {
-        return (
-          <Card
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            content={post.content}
-            date={post.date}
-            like={post.like}
-          />
-        );
-      })}
+      <PostList posts={posts} />
     </>
   );
 };
