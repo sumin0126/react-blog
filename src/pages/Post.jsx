@@ -41,6 +41,7 @@ const Post = () => {
         {post.comments.map((comment) => {
           return (
             <CommentCard
+              key={comment.id}
               author={comment.author}
               content={comment.content}
               createdAt={comment.createdAt}
