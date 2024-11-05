@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import img6 from '../../assets/image/img6.jpg';
 
 const Card = (props) => {

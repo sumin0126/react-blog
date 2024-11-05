@@ -26,10 +26,6 @@ const Header = () => {
           <div className="writingBtn" onClick={handleClickWriting}>
             ✐ 글쓰기
           </div>
-
-          <div className="loginBox">
-            <div className="loginBtn">로그인</div>
-          </div>
         </div>
       </div>
     </header>

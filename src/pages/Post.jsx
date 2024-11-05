@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+
 import CommentCard from '../components/card/comment/CommentCard';
 import img2 from '../assets/image/img2.jpg';
 
