@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import CommentList from '../components/list/comment/CommentList';
 import img2 from '../assets/image/img2.jpg';
 
-const Post = () => {
+const PostDetail = () => {
   const [post, setPost] = useState();
   const [comments, setComments] = useState();
 
@@ -58,4 +58,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default PostDetail;

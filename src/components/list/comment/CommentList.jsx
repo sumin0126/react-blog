@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CommentItem from './CommentItem';
+import CommentItem from 'components/list/comment/CommentItem';
 
 /**
  * @description 댓글 목록 컴포넌트
