@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const handleClickLogo = () => {
-    router('/');
+    navigate('/');
   };
 
   const handleClickWriting = () => {
-    router('writing');
+    navigate('/post/new');
   };
 
   return (
