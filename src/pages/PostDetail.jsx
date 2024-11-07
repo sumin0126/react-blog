@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import CommentList from '../components/list/comment/CommentList';
 import img2 from '../assets/image/img2.jpg';
+import NewComment from 'components/list/comment/NewComment';
 
 /**
  * @description 블로그 글 상세정보 컴포넌트
@@ -23,8 +24,8 @@ const PostDetail = () => {
       });
     };
 
-    // 댓글들의 정보를 불러오는 함수
     const getComments = () => {
+      // 댓글들의 정보를 불러오는 함수
       axios
         .get(`http://localhost:3001/comments?postId=${id}`)
         .then((res) => setComments(res.data));
@@ -94,8 +95,11 @@ const PostDetail = () => {
         <div className="content-main-text">{post.content}</div>
       </section>
 
-      {/* 댓글 목록 */}
+      {/* 댓글 목록 컴포넌트 */}
       <CommentList comments={comments} />
+
+      {/* 새 댓글 컴포넌트 */}
+      <NewComment />
     </>
   );
 };

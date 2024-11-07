@@ -5,6 +5,7 @@
  * @param createdAt - 댓글 만든 날짜
  * @param content - 댓글 내용
  */
+
 const CommentItem = (props) => {
   const { author, createdAt, content } = props;
 
@@ -19,27 +20,6 @@ const CommentItem = (props) => {
       </div>
 
       <div className="comment-content">{content}</div>
-
-      <div className="newCommentBox">
-        <div className="user">
-          <div className="userImg"></div>
-          <input
-            type="text"
-            className="userName"
-            placeholder="이름을 입력하세요."
-          ></input>
-        </div>
-
-        <textarea
-          className="content"
-          placeholder="댓글 내용을 입력하세요."
-        ></textarea>
-
-        <div className="btnWrapper">
-          <button className="commentUploadBtn">등록</button>
-          <button className="commentCancelBtn">취소</button>
-        </div>
-      </div>
     </section>
   );
 };
