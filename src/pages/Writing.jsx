@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { getDate } from 'utils/common';
@@ -18,11 +18,12 @@ const Writing = () => {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams();
 
   useEffect(() => {
     // 새로운 글 등록인지, 수정인지 확인하고 글 상세정보를 불러오는 함수
-    if (window.location.pathname === '/post/new') {
+    if (location.pathname === '/post/new') {
       setIsEdit(false);
     } else {
       setIsEdit(true);
