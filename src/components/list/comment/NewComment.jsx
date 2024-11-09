@@ -55,45 +55,43 @@ const NewComment = (props) => {
   };
 
   return (
-    <>
-      <div className="new-comment-box">
-        <div className="top">
-          <div className="user">
-            <div className="user-img"></div>
-            <input
-              type="text"
-              className="user-name"
-              placeholder="이름을 입력하세요."
-              value={comment.author}
-              onChange={handleChangeAuthor}
-            ></input>
-          </div>
-          <div className="date">{getDate()}</div>
+    <div className="new-comment-box">
+      <div className="top">
+        <div className="user">
+          <div className="user-img"></div>
+          <input
+            type="text"
+            className="user-name"
+            placeholder="이름을 입력하세요."
+            value={comment.author}
+            onChange={handleChangeAuthor}
+          ></input>
         </div>
-
-        <textarea
-          className="content"
-          placeholder="댓글 내용을 입력하세요."
-          value={comment.content}
-          onChange={handleChangeCommentContent}
-        ></textarea>
-
-        <div className="btn-wrapper">
-          <button
-            className="comment-upload-btn"
-            onClick={handleClickCommentUpload}
-          >
-            등록
-          </button>
-          <button
-            className="comment-cancel-btn"
-            onClick={handleClickCommentCancel}
-          >
-            취소
-          </button>
-        </div>
+        <div className="date">{getDate()}</div>
       </div>
-    </>
+
+      <textarea
+        className="content"
+        placeholder="댓글 내용을 입력하세요."
+        value={comment.content}
+        onChange={handleChangeCommentContent}
+      ></textarea>
+
+      <div className="btn-wrapper">
+        <button
+          className="comment-upload-btn"
+          onClick={handleClickCommentUpload}
+        >
+          등록
+        </button>
+        <button
+          className="comment-cancel-btn"
+          onClick={handleClickCommentCancel}
+        >
+          취소
+        </button>
+      </div>
+    </div>
   );
 };
 

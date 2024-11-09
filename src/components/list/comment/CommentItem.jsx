@@ -5,7 +5,6 @@
  * @param createdAt - 댓글 만든 날짜
  * @param content - 댓글 내용
  */
-
 const CommentItem = (props) => {
   const { author, createdAt, content } = props;
 
