@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
+import { getDate } from 'utils/common';
+
 /**
  * @description - 글 수정 및 등록 컴포넌트
  */
@@ -10,6 +12,9 @@ const Writing = () => {
   const [post, setPost] = useState({
     title: '',
     content: '',
+    date: getDate(),
+    like: 0,
+    thumbnail: '',
   });
 
   const navigate = useNavigate();
@@ -39,9 +44,14 @@ const Writing = () => {
     setPost({ ...post, content: newContent });
   };
 
+  // 수정된 글을 저장하고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
+  // 등록된 글을 server에 보내고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
   const handleUpload = () => {
-    // 수정된 글을 저장하고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
-    // 등록된 글을 server에 보내고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
+    if (post.title === '' || post.content === '') {
+      alert('제목과 내용을 입력하세요 !');
+      return null;
+    }
+
     if (isEdit) {
       axios.put(`http://localhost:3001/posts/${id}`, post).then(() => {
         alert('수정이 완료 되었습니다 !');

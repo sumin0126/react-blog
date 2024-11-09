@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import CommentList from '../components/list/comment/CommentList';
-import img2 from '../assets/image/img2.jpg';
+import CommentList from 'components/list/comment/CommentList';
+import img2 from 'assets/image/img2.jpg';
 import NewComment from 'components/list/comment/NewComment';
 
 /**
@@ -40,25 +40,14 @@ const PostDetail = () => {
     navigate(`/post/${id}/edit`);
   };
 
-  // const handleClickPostCancel = () => {
-  //   // 삭제 버튼을 클릭하면 글을 삭제해주는 함수
-  //   const confirmBox = confirm('글을 삭제하시겠습니까?');
-  //   if (confirmBox) {
-  //     axios.delete(`http://localhost:3001/posts/${id}`).then((res) => {
-  //       setPost(res.date);
-  //     });
-  //     navigate('/');
-  //   } else {
-  //     navigate('/');
-  //   }
-  // };
-
   const handleClickPostCancel = () => {
     // 삭제 버튼을 클릭하면 글을 삭제해주는 함수
-    axios.delete(`http://localhost:3001/posts/${id}`).then((res) => {
-      setPost(res.date);
-    });
-    navigate('/');
+    const confirmBox = window.confirm('글을 삭제하시겠습니까?');
+    if (confirmBox) {
+      axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
+        navigate('/');
+      });
+    }
   };
 
   if (!post || !comments) {
@@ -74,7 +63,7 @@ const PostDetail = () => {
         <div className="post-info">
           <div className="info-left">
             <div className="info-date">{post.date}</div>
-            <div className="info-like">{post.like}</div>
+            <div className="info-like">♥ {post.like}</div>
           </div>
 
           <div className="info-right">
@@ -99,7 +88,7 @@ const PostDetail = () => {
       <CommentList comments={comments} />
 
       {/* 새 댓글 컴포넌트 */}
-      <NewComment />
+      <NewComment postId={id} />
     </>
   );
 };
