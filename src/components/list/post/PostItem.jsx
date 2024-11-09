@@ -27,7 +27,7 @@ const PostItem = (props) => {
         <div className="content">{content}</div>
         <div className="bottom-box">
           <div className="date">{date}</div>
-          <div className="like">{like}</div>
+          <div className="like">♥ {like}</div>
         </div>
       </div>
 
