@@ -1,58 +1,74 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+
+import { getDate } from 'utils/common';
 
 /**
  * @description 새 댓글 컴포넌트
+ *
+ * @param postId - 포스트 id
  */
-const NewComment = () => {
+const NewComment = (props) => {
+  const { postId } = props;
+
   const [comment, setComment] = useState({
     author: '',
     content: '',
-    createdAt: '',
   });
 
-  const navigate = useNavigate();
-  const { id } = useParams();
-
+  // 댓글 취소 버튼을 클릭하면 comment 상태를 초기화시켜주는 함수
   const handleClickCommentCancel = () => {
-    // 댓글 취소 버튼을 클릭하면 comment 상태를 초기화시켜주는 함수
     setComment({ author: '', content: '' });
   };
 
+  // 댓글 등록 버튼을 클릭하면 데이터를 server에 전송해주는 함수
   const handleClickCommentUpload = () => {
-    // 댓글 등록 버튼을 클릭하면 데이터를 server에 전송해주는 함수
-    axios.post('http://localhost:3001/comments', comment).then(() => {
-      alert('댓글 등록이 완료 되었습니다 !');
-      navigate(`/post/${id}`);
-      setComment({ author: '', content: '' });
-    });
+    if (comment.author !== '' && comment.content !== '') {
+      const commentInfo = {
+        postId: postId,
+        author: comment.author,
+        content: comment.content,
+        createdAt: getDate(),
+      };
+
+      axios
+        .post(`http://localhost:3001/comments?postId=${postId}`, commentInfo)
+        .then(() => {
+          alert('댓글 등록이 완료 되었습니다 !');
+          setComment({ author: '', content: '' });
+        });
+    } else {
+      alert('이름과 내용을 입력하세요 !');
+    }
   };
 
+  // 이름을 입력하면 comment 상태에 저장해주는 함수
   const handleChangeAuthor = (e) => {
-    // userName 창에 텍스트를 입력하면 comment 상태에 저장해주는 함수
     const newAuthor = e.target.value;
     setComment({ ...comment, author: newAuthor });
   };
 
+  // 내용을 입력하면 comment 상태에 저장해주는 함수
   const handleChangeCommentContent = (e) => {
-    // content 창에 텍스트를 입력하면 comment 상태에 저장해주는 함수
     const newCommentContent = e.target.value;
     setComment({ ...comment, content: newCommentContent });
   };
 
   return (
     <>
-      <div className="newCommentBox">
-        <div className="user">
-          <div className="userImg"></div>
-          <input
-            type="text"
-            className="userName"
-            placeholder="이름을 입력하세요."
-            value={comment.author}
-            onChange={handleChangeAuthor}
-          ></input>
+      <div className="new-comment-box">
+        <div className="top">
+          <div className="user">
+            <div className="user-img"></div>
+            <input
+              type="text"
+              className="user-name"
+              placeholder="이름을 입력하세요."
+              value={comment.author}
+              onChange={handleChangeAuthor}
+            ></input>
+          </div>
+          <div className="date">{getDate()}</div>
         </div>
 
         <textarea
@@ -62,15 +78,15 @@ const NewComment = () => {
           onChange={handleChangeCommentContent}
         ></textarea>
 
-        <div className="btnWrapper">
+        <div className="btn-wrapper">
           <button
-            className="commentUploadBtn"
+            className="comment-upload-btn"
             onClick={handleClickCommentUpload}
           >
             등록
           </button>
           <button
-            className="commentCancelBtn"
+            className="comment-cancel-btn"
             onClick={handleClickCommentCancel}
           >
             취소

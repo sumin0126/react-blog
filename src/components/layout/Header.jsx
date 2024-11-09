@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * @description 헤더
+ */
 const Header = () => {
   const navigate = useNavigate();
 
