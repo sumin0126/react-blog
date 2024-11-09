@@ -2,6 +2,11 @@ import React from 'react';
 
 import PostItem from 'components/list/post/PostItem';
 
+/**
+ * @description 포스트 카드 목록 컴포넌트
+ *
+ * @param posts - 포스트 카드 목록
+ */
 const PostList = (props) => {
   const { posts } = props;
 

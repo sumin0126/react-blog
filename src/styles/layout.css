@@ -83,3 +83,22 @@
   width: 70%;
   margin: auto;
 }
+
+.footerWrapper {
+  height: 100px;
+  border-top: 1px solid #eee;
+  margin-top: 60px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerWrapper > .info {
+  color: #ff5a5a;
+  font-size: 14px;
+}
+
+.footerWrapper > .info > span {
+  color: #a1a1a1;
+}

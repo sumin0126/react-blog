@@ -58,8 +58,7 @@
   color: #c8c8c8;
 }
 
-.btn-wrapper {
-  /* background-color: #eee; */
+.writing-wrapper > .btn-wrapper {
   width: 250px;
   height: 40px;
   margin-top: 30px;

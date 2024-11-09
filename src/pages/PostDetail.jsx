@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import CommentList from '../components/list/comment/CommentList';
-import img2 from '../assets/image/img2.jpg';
+import CommentList from 'components/list/comment/CommentList';
+import img2 from 'assets/image/img2.jpg';
+import NewComment from 'components/list/comment/NewComment';
 
+/**
+ * @description 블로그 글 상세정보 컴포넌트
+ */
 const PostDetail = () => {
   const [post, setPost] = useState();
   const [comments, setComments] = useState();
 
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,8 +24,8 @@ const PostDetail = () => {
       });
     };
 
-    // 댓글들의 정보를 불러오는 함수
     const getComments = () => {
+      // 댓글들의 정보를 불러오는 함수
       axios
         .get(`http://localhost:3001/comments?postId=${id}`)
         .then((res) => setComments(res.data));
@@ -29,6 +34,21 @@ const PostDetail = () => {
     getPostDetail();
     getComments();
   }, []);
+
+  const handleClickEdit = () => {
+    // 수정 버튼을 클릭하면 수정 페이지로 이동하는 함수
+    navigate(`/post/${id}/edit`);
+  };
+
+  const handleClickPostCancel = () => {
+    // 삭제 버튼을 클릭하면 글을 삭제해주는 함수
+    const confirmBox = window.confirm('글을 삭제하시겠습니까?');
+    if (confirmBox) {
+      axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
+        navigate('/');
+      });
+    }
+  };
 
   if (!post || !comments) {
     return;
@@ -39,9 +59,21 @@ const PostDetail = () => {
       {/* 포스트 헤더 영역 */}
       <section className="post-header">
         <h2 className="post-title">{post.title}</h2>
-        <div className="post-date-like">
-          <div className="post-date">{post.date}</div>
-          <div className="post-like">좋아요 : {post.like}</div>
+
+        <div className="post-info">
+          <div className="info-left">
+            <div className="info-date">{post.date}</div>
+            <div className="info-like">♥ {post.like}</div>
+          </div>
+
+          <div className="info-right">
+            <button className="info-edit" onClick={handleClickEdit}>
+              수정
+            </button>
+            <button className="info-cancel" onClick={handleClickPostCancel}>
+              삭제
+            </button>
+          </div>
         </div>
       </section>
 
@@ -52,8 +84,11 @@ const PostDetail = () => {
         <div className="content-main-text">{post.content}</div>
       </section>
 
-      {/* 댓글 목록 */}
+      {/* 댓글 목록 컴포넌트 */}
       <CommentList comments={comments} />
+
+      {/* 새 댓글 컴포넌트 */}
+      <NewComment postId={id} />
     </>
   );
 };
