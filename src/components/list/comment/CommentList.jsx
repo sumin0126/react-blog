@@ -16,6 +16,7 @@ const CommentList = (props) => {
         return (
           <CommentItem
             key={comment.id}
+            id={comment.id}
             author={comment.author}
             content={comment.content}
             createdAt={comment.createdAt}
