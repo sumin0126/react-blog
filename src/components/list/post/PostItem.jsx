@@ -16,6 +16,7 @@ const PostItem = (props) => {
 
   const navigate = useNavigate();
 
+  // 클릭하면 포스트 본문 페이지로 이동하는 함수
   const handleClickPost = () => {
     navigate(`/post/${props.id}`);
   };

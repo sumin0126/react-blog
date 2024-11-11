@@ -6,8 +6,8 @@ import PostList from '../components/list/post/PostList';
 const Home = () => {
   const [posts, setPosts] = useState();
 
+  // 블로그 글 전체 정보를 불러오는 함수
   useEffect(() => {
-    // 블로그 글 전체 정보를 불러오는 함수
     axios.get('http://localhost:3001/posts').then((res) => {
       setPosts(res.data);
     });

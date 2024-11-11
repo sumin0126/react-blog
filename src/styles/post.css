@@ -63,7 +63,6 @@
 }
 
 .post-header {
-  /* background-color: #eee; */
   margin-top: 50px;
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
@@ -173,10 +172,23 @@
   font-size: 14px;
 }
 
+.comment-header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .comment-createdAt {
   color: #999;
   font-weight: 400;
   font-size: 14px;
+  margin-right: 20px;
+}
+
+.comment-header-right .fa-trash {
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .comment-content {
