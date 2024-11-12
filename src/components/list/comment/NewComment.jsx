@@ -66,6 +66,7 @@ const NewComment = (props) => {
           title={modalTitle}
           completeText="확인"
           onClickComplete={() => setIsOpenModal(false)}
+          modalClose={() => setIsOpenModal(false)}
         />
       )}
       <div className="new-comment-box">

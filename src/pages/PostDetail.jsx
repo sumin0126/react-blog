@@ -15,6 +15,8 @@ const PostDetail = () => {
   const [comments, setComments] = useState();
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [like, setLike] = useState(0);
+  const [isLike, setIsLike] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -24,6 +26,7 @@ const PostDetail = () => {
     const getPostDetail = () => {
       axios.get(`http://localhost:3001/posts/${id}`).then((res) => {
         setPost(res.data);
+        setLike(res.data.like);
       });
     };
 
@@ -56,6 +59,22 @@ const PostDetail = () => {
     setIsOpenModal(true);
   };
 
+  // 하트아이콘을 클릭하면 like와 post 상태를 동시에 업데이트해주고
+  // 변경된 좋아요 수를 서버에 업데이트 해주는 함수
+  const handleClickLike = () => {
+    const newLikeCount = isLike ? like - 1 : like + 1;
+    setLike(newLikeCount);
+    setPost({ ...post, like: newLikeCount });
+    setIsLike(!isLike);
+
+    axios
+      .put(`http://localhost:3001/posts/${id}`, {
+        ...post,
+        like: newLikeCount,
+      })
+      .then(() => console.log('서버에 좋아요 수가 업데이트 되었습니다 !'));
+  };
+
   if (!post || !comments) {
     return;
   }
@@ -82,7 +101,12 @@ const PostDetail = () => {
         <div className="post-info">
           <div className="info-left">
             <div className="info-date">{post.date}</div>
-            <div className="info-like">♥ {post.like}</div>
+            <div className="info-like" onClick={handleClickLike}>
+              <i
+                className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
+              ></i>
+              <div>{post.like}</div>
+            </div>
           </div>
 
           <div className="info-right">
