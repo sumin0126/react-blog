@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 /**
  * @description 컨펌 모달 컴포넌트
  *
