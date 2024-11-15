@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { getDate } from 'utils/common';
+import AlertModal from 'components/modal/AlertModal';
 
 /**
  * @description - 글 수정 및 등록 컴포넌트
@@ -16,6 +17,8 @@ const Writing = () => {
     like: 0,
     thumbnail: '',
   });
+  const [modalTitle, setModalTitle] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,34 +48,46 @@ const Writing = () => {
     setPost({ ...post, content: newContent });
   };
 
-  // 수정된 글을 저장하고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
-  // 등록된 글을 server에 보내고 알림창을 띄워준 뒤, 이전 페이지로 돌아가는 함수
+  // 수정된 글 저장 및 완료 모달 띄워주는 함수
+  // 등록된 글 전송 및 완료 모달 띄워주는 함수
   const handleUpload = () => {
     if (post.title === '' || post.content === '') {
-      alert('제목과 내용을 입력하세요 !');
+      setModalTitle('제목과 내용을 입력하세요 !');
+      setIsOpenModal(true);
       return null;
     }
 
     if (isEdit) {
       axios.put(`http://localhost:3001/posts/${id}`, post).then(() => {
-        alert('수정이 완료 되었습니다 !');
-        navigate(-1);
+        setModalTitle('수정이 완료 되었습니다 !');
+        setIsOpenModal(true);
       });
     } else {
       axios.post('http://localhost:3001/posts', post).then(() => {
-        alert('등록이 완료 되었습니다 !');
-        navigate(-1);
+        setModalTitle('등록이 완료 되었습니다 !');
+        setIsOpenModal(true);
       });
     }
   };
 
+  // 취소 버튼을 클릭하면 이전 페이지로 돌아가는 함수
   const handleClickCancel = () => {
-    // 취소 버튼을 클릭하면 이전 페이지로 돌아가는 함수
     navigate(-1);
   };
 
   return (
     <>
+      {isOpenModal && (
+        <AlertModal
+          title={modalTitle}
+          completeText="확인"
+          onClickComplete={() => {
+            setIsOpenModal(false);
+            navigate(-1);
+          }}
+          modalClose={() => setIsOpenModal(false)}
+        />
+      )}
       <section className="writing-wrapper">
         <div className="text-wrapper">
           <input

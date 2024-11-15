@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { getDate } from 'utils/common';
+import AlertModal from 'components/modal/AlertModal';
 
 /**
  * @description 새 댓글 컴포넌트
@@ -11,6 +12,8 @@ import { getDate } from 'utils/common';
 const NewComment = (props) => {
   const { postId } = props;
 
+  const [modalTitle, setModalTitle] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [comment, setComment] = useState({
     author: '',
     content: '',
@@ -34,11 +37,13 @@ const NewComment = (props) => {
       axios
         .post(`http://localhost:3001/comments?postId=${postId}`, commentInfo)
         .then(() => {
-          alert('댓글 등록이 완료 되었습니다 !');
+          setModalTitle('댓글 등록이 완료 되었습니다 !');
+          setIsOpenModal(true);
           setComment({ author: '', content: '' });
         });
     } else {
-      alert('이름과 내용을 입력하세요 !');
+      setModalTitle('이름과 내용을 입력하세요 !');
+      setIsOpenModal(true);
     }
   };
 
@@ -55,43 +60,53 @@ const NewComment = (props) => {
   };
 
   return (
-    <div className="new-comment-box">
-      <div className="top">
-        <div className="user">
-          <div className="user-img"></div>
-          <input
-            type="text"
-            className="user-name"
-            placeholder="이름을 입력하세요."
-            value={comment.author}
-            onChange={handleChangeAuthor}
-          ></input>
+    <>
+      {isOpenModal && (
+        <AlertModal
+          title={modalTitle}
+          completeText="확인"
+          onClickComplete={() => setIsOpenModal(false)}
+          modalClose={() => setIsOpenModal(false)}
+        />
+      )}
+      <div className="new-comment-box">
+        <div className="top">
+          <div className="user">
+            <div className="user-img"></div>
+            <input
+              type="text"
+              className="user-name"
+              placeholder="이름을 입력하세요."
+              value={comment.author}
+              onChange={handleChangeAuthor}
+            ></input>
+          </div>
+          <div className="date">{getDate()}</div>
         </div>
-        <div className="date">{getDate()}</div>
-      </div>
 
-      <textarea
-        className="content"
-        placeholder="댓글 내용을 입력하세요."
-        value={comment.content}
-        onChange={handleChangeCommentContent}
-      ></textarea>
+        <textarea
+          className="content"
+          placeholder="댓글 내용을 입력하세요."
+          value={comment.content}
+          onChange={handleChangeCommentContent}
+        ></textarea>
 
-      <div className="btn-wrapper">
-        <button
-          className="comment-upload-btn"
-          onClick={handleClickCommentUpload}
-        >
-          등록
-        </button>
-        <button
-          className="comment-cancel-btn"
-          onClick={handleClickCommentCancel}
-        >
-          취소
-        </button>
+        <div className="btn-wrapper">
+          <button
+            className="comment-upload-btn"
+            onClick={handleClickCommentUpload}
+          >
+            등록
+          </button>
+          <button
+            className="comment-cancel-btn"
+            onClick={handleClickCommentCancel}
+          >
+            취소
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
