@@ -75,6 +75,13 @@ const PostDetail = () => {
       .then(() => console.log('서버에 좋아요 수가 업데이트 되었습니다 !'));
   };
 
+  // 카테고리를 클릭하면 해당 카테고리 페이지로 이동하는 함수
+  const handleClickCategory = () => {
+    if (post.category) {
+      navigate(`/categories/${post.category}`);
+    }
+  };
+
   if (!post || !comments) {
     return;
   }
@@ -96,6 +103,9 @@ const PostDetail = () => {
       )}
       {/* 포스트 헤더 영역 */}
       <section className="post-header">
+        <p className="post-category" onClick={handleClickCategory}>
+          {post.category}
+        </p>
         <h2 className="post-title">{post.title}</h2>
 
         <div className="post-info">

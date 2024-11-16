@@ -6,6 +6,23 @@
   border-bottom: 1px solid #eee;
 }
 
+.header_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_left i {
+  margin-right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.header_left i:hover {
+  color: #ff5a5a;
+}
+
 .headerBar h2 {
   font-weight: 700;
   cursor: pointer;

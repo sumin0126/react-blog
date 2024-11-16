@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import PostDetail from 'pages/PostDetail';
 import Writing from 'pages/Writing';
+import PostCategory from 'pages/PostCategory';
 
 import LayoutContainer from 'components/layout/LayoutContainer';
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/post/:id" element={<PostDetail />} />
         <Route path="/post/new" element={<Writing />} />
         <Route path="/post/:id/edit" element={<Writing />} />
+        <Route path="/categories/:category" element={<PostCategory />} />
       </Routes>
     </LayoutContainer>
   );

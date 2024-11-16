@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import PostList from '../components/list/post/PostList';
 
+/**
+ * @description 홈 컴포넌트
+ */
 const Home = () => {
   const [posts, setPosts] = useState();
 
