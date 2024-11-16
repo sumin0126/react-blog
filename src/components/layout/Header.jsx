@@ -24,12 +24,15 @@ const Header = () => {
   // 메뉴 버튼을 클릭하면 네비게이션바가 열리고 닫히는 함수
   const handleClickBars = () => {
     const navBar = document.querySelector('.navbar_wrapper');
+    const navBarBg = document.querySelector('.navbarBg');
 
     if (openNavbar === false) {
       navBar.classList.add('active');
+      navBarBg.classList.add('active');
       setOpenNavbar(true);
     } else {
       navBar.classList.remove('active');
+      navBarBg.classList.remove('active');
       setOpenNavbar(false);
     }
   };
@@ -40,7 +43,9 @@ const Header = () => {
     <header>
       <div className="headerBar">
         <div className="header_left">
-          <i className="fa-solid fa-bars" onClick={handleClickBars}></i>
+          {isHome && (
+            <i className="fa-solid fa-bars" onClick={handleClickBars}></i>
+          )}
           <h2 onClick={handleClickLogo}>smooth.log</h2>
         </div>
 

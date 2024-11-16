@@ -70,6 +70,17 @@
   flex-direction: column;
 }
 
+.post-header .post-category {
+  color: #555;
+  font-size: 14px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.post-header .post-title {
+  margin-bottom: 24px;
+}
+
 .post-info {
   display: flex;
   flex-direction: row;

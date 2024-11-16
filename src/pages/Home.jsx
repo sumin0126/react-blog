@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import PostList from '../components/list/post/PostList';
-import Navbar from 'components/Navbar';
 
+/**
+ * @description 홈 컴포넌트
+ */
 const Home = () => {
   const [posts, setPosts] = useState();
 
