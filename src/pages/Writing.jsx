@@ -19,6 +19,7 @@ const Writing = () => {
   });
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenCategory, setIsOpenCategory] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,6 +76,23 @@ const Writing = () => {
     navigate(-1);
   };
 
+  // 카테고리 버튼을 누르면 카테고리 메뉴가 열리고 닫히는 함수
+  const handleClickCategory = () => {
+    if (isOpenCategory === false) {
+      setIsOpenCategory(true);
+    } else {
+      setIsOpenCategory(false);
+    }
+  };
+
+  // 카테고리 메뉴에서 원하는 카테고리를 선택하면 화면에 보여주는 함수
+  const handleClickSelectCategory = (e) => {
+    const selectCategory = e.target.textContent;
+    const category = document.querySelector('.category-title');
+
+    category.textContent = selectCategory;
+  };
+
   return (
     <>
       {isOpenModal && (
@@ -89,6 +107,28 @@ const Writing = () => {
         />
       )}
       <section className="writing-wrapper">
+        <div className="category" tabIndex="0" onClick={handleClickCategory}>
+          <p className="category-title">카테고리</p>
+          <i className="fa-solid fa-sort-down bottom-arrow"></i>
+        </div>
+
+        {isOpenCategory && (
+          <div className="category-dropdown">
+            <div className="food" onClick={handleClickSelectCategory}>
+              <i className="fa-regular fa-file file-icon"></i>
+              <p>맛집 탐험</p>
+            </div>
+            <div className="travel" onClick={handleClickSelectCategory}>
+              <i className="fa-regular fa-file file-icon"></i>
+              <p>국내 여행</p>
+            </div>
+            <div className="world-travel" onClick={handleClickSelectCategory}>
+              <i className="fa-regular fa-file file-icon"></i>
+              <p>해외 여행</p>
+            </div>
+          </div>
+        )}
+
         <div className="text-wrapper">
           <input
             className="title"
@@ -96,6 +136,7 @@ const Writing = () => {
             value={post.title}
             onChange={handleChangeTitle}
           />
+
           <input
             className="content"
             placeholder="내용을 입력하세요"
