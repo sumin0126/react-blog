@@ -75,17 +75,16 @@
   align-items: center;
 }
 
-.food i,
-.travel i,
-.world-travel i {
+.file-icon,
+.arrow-icon {
   margin-right: 10px;
   font-size: 14px;
   color: #c5c5c5;
 }
 
-.food p,
-.travel p,
-.world-travel p {
+.detailPost_wrapper .food p,
+.detailPost_wrapper .travel p,
+.detailPost_wrapper .world-travel p {
   font-size: 14px;
   color: #999;
   margin: 8px 0;
@@ -96,23 +95,23 @@
   display: none;
 }
 
-.food:hover .file-icon,
-.travel:hover .file-icon,
-.world-travel:hover .file-icon {
+.detailPost_wrapper .food:hover .file-icon,
+.detailPost_wrapper .travel:hover .file-icon,
+.detailPost_wrapper .world-travel:hover .file-icon {
   display: none;
 }
 
-.food:hover .arrow-icon,
-.travel:hover .arrow-icon,
-.world-travel:hover .arrow-icon {
+.detailPost_wrapper .food:hover .arrow-icon,
+.detailPost_wrapper .travel:hover .arrow-icon,
+.detailPost_wrapper .world-travel:hover .arrow-icon {
   display: block;
   color: #555;
   font-size: 10px;
 }
 
-.food:hover p,
-.travel:hover p,
-.world-travel:hover p {
+.detailPost_wrapper .food:hover p,
+.detailPost_wrapper .travel:hover p,
+.detailPost_wrapper .world-travel:hover p {
   color: #555;
 }
 
