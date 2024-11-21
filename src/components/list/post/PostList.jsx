@@ -11,7 +11,7 @@ const PostList = (props) => {
   const { posts } = props;
 
   return (
-    <>
+    <div className="card">
       {posts.map((post) => {
         return (
           <PostItem
@@ -24,7 +24,7 @@ const PostList = (props) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 

@@ -102,46 +102,49 @@ const PostDetail = () => {
         />
       )}
       {/* 포스트 헤더 영역 */}
-      <section className="post-header">
-        <p className="post-category" onClick={handleClickCategory}>
-          {post.category}
-        </p>
-        <h2 className="post-title">{post.title}</h2>
+      <section className="post-wrapper">
+        <section className="post-header">
+          <p className="post-category" onClick={handleClickCategory}>
+            {post.category}
+          </p>
+          <h2 className="post-title">{post.title}</h2>
 
-        <div className="post-info">
-          <div className="info-left">
-            <div className="info-date">{post.date}</div>
-            <div className="info-like" onClick={handleClickLike}>
-              <i
-                className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
-              ></i>
-              <div>{post.like}</div>
+          <div className="post-info">
+            <div className="info-left">
+              <div className="info-date">{post.date}</div>
+              <div className="info-like" onClick={handleClickLike}>
+                <i
+                  className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
+                ></i>
+                <div>{post.like}</div>
+              </div>
+            </div>
+
+            <div className="info-right">
+              <button className="info-edit" onClick={handleClickEdit}>
+                수정
+              </button>
+              <button className="info-cancel" onClick={handleClickPostCancel}>
+                삭제
+              </button>
             </div>
           </div>
+        </section>
 
-          <div className="info-right">
-            <button className="info-edit" onClick={handleClickEdit}>
-              수정
-            </button>
-            <button className="info-cancel" onClick={handleClickPostCancel}>
-              삭제
-            </button>
+        {/* 포스트 콘텐트 영역 */}
+        <section className="post-content">
+          <div className="content-main-img">
+            <img src={img2} alt="picture1" width="auto" />
           </div>
-        </div>
+          <div className="content-main-text">{post.content}</div>
+        </section>
+
+        {/* 댓글 목록 컴포넌트 */}
+        <CommentList comments={comments} />
+
+        {/* 새 댓글 컴포넌트 */}
+        <NewComment postId={id} />
       </section>
-
-      <section className="post-content">
-        <div className="content-main-img">
-          <img src={img2} alt="picture1" width="auto" />
-        </div>
-        <div className="content-main-text">{post.content}</div>
-      </section>
-
-      {/* 댓글 목록 컴포넌트 */}
-      <CommentList comments={comments} />
-
-      {/* 새 댓글 컴포넌트 */}
-      <NewComment postId={id} />
     </>
   );
 };

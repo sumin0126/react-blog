@@ -11,6 +11,7 @@ import AlertModal from 'components/modal/AlertModal';
 const Writing = () => {
   const [isEdit, setIsEdit] = useState();
   const [post, setPost] = useState({
+    category: '',
     title: '',
     content: '',
     date: getDate(),
@@ -47,6 +48,12 @@ const Writing = () => {
   const handleChangeContent = (e) => {
     const newContent = e.target.value;
     setPost({ ...post, content: newContent });
+  };
+
+  // 클릭한 카테고리를 새 category로 저장해주는 함수
+  const handleChangeCategory = (e) => {
+    const newCategory = e.target.textContent;
+    setPost({ ...post, category: newCategory });
   };
 
   // 수정된 글 저장 및 완료 모달 띄워주는 함수
@@ -91,6 +98,7 @@ const Writing = () => {
     const category = document.querySelector('.category-title');
 
     category.textContent = selectCategory;
+    setIsOpenCategory(false);
   };
 
   return (
@@ -107,13 +115,13 @@ const Writing = () => {
         />
       )}
       <section className="writing-wrapper">
-        <div className="category" tabIndex="0" onClick={handleClickCategory}>
+        <div className="category" onClick={handleClickCategory}>
           <p className="category-title">카테고리</p>
           <i className="fa-solid fa-sort-down bottom-arrow"></i>
         </div>
 
         {isOpenCategory && (
-          <div className="category-dropdown">
+          <div className="category-dropdown" onClick={handleChangeCategory}>
             <div className="food" onClick={handleClickSelectCategory}>
               <i className="fa-regular fa-file file-icon"></i>
               <p>맛집 탐험</p>
@@ -137,7 +145,7 @@ const Writing = () => {
             onChange={handleChangeTitle}
           />
 
-          <input
+          <textarea
             className="content"
             placeholder="내용을 입력하세요"
             value={post.content}

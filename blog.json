@@ -2,31 +2,75 @@
   "posts": [
     {
       "id": "1",
-      "category": "맛집 탐험",
+      "category": "food",
       "title": "100% 유기농 밀가루로만 만든 병점 베이커리 맛집 카페 '빵쌤'",
       "content": "빵 종류도 다양하고 너어무 맛있는 베이커리 맛집 빵쌤 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 !! 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구",
       "date": "2024. 10. 31",
-      "like": 107,
+      "like": 112,
       "thumbnail": ""
     },
     {
       "id": "2",
-      "category": "맛집 탐험",
+      "category": "food",
       "title": "평일 웨이팅 기본 30분, 평택 소고기해장국 찐맛집 '만세해장국'",
       "content": "평택 시민들은 다 아는 해장국 찐 맛집 '만세해장국'! 해장국뿐만 아니라 싱싱한 선지도 그냥 서비스로 주시는 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구",
       "date": "2024. 10. 31",
-      "like": 214,
+      "like": 215,
       "thumbnail": ""
     },
     {
-      "id": "5111",
-      "category": "국내 여행",
-      "title": "물놀이하기 좋은 해수욕장 추천",
-      "content": "sss",
-      "date": "2024. 11. 12",
-      "like": 16,
-      "thumbnail": "",
-      "isLike": true
+      "id": "a2d8",
+      "category": "food",
+      "title": "포스팅1",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "74e7",
+      "category": "travel",
+      "title": "포스팅2",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "db68",
+      "category": "worldTravel",
+      "title": "포스팅3",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 2,
+      "thumbnail": ""
+    },
+    {
+      "id": "73fb",
+      "category": "맛집 탐험",
+      "title": "포스팅4",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "87a6",
+      "category": "travel",
+      "title": "포스팅5",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "b20d",
+      "category": "worldTravel",
+      "title": "포스팅6",
+      "content": "테스트",
+      "date": "2024. 11. 18",
+      "like": 1,
+      "thumbnail": ""
     }
   ],
   "comments": [
@@ -38,11 +82,29 @@
       "createdAt": "2024. 10. 31"
     },
     {
-      "id": "4699",
-      "postId": "5111",
-      "author": "ㅎㅎㅎㅎ",
-      "content": "ㅎㅎㅎㅎㅎㅎㅎㅎ",
-      "createdAt": "2024. 11. 16"
+      "id": "2ad2",
+      "postId": "a2d8",
+      "author": "ㅇㅇ",
+      "content": "ㅇㅇㅇ",
+      "createdAt": "2024. 11. 21"
+    }
+  ],
+  "categories": [
+    {
+      "id": "99",
+      "categoryName": "all"
+    },
+    {
+      "id": "100",
+      "categoryName": "food"
+    },
+    {
+      "id": "101",
+      "categoryName": "travel"
+    },
+    {
+      "id": "102",
+      "categoryName": "worldTravel"
     }
   ]
 }
