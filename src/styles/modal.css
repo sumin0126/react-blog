@@ -88,7 +88,6 @@
   margin-top: 10px;
 }
 
-.confirm-button-wrapper .confirm,
 .confirm-button-wrapper .cancel {
   background-color: #eee;
   border: none;
@@ -101,10 +100,12 @@
 
 .confirm-button-wrapper .confirm {
   margin-right: 20px;
-}
-
-.confirm-button-wrapper .confirm:hover,
-.confirm-button-wrapper .cancel:hover {
   background-color: #ff5a5a;
   color: #fff;
+  font-weight: 500;
+  border: none;
+  width: 140px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
 }

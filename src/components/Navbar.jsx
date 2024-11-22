@@ -13,13 +13,14 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
+  // 카테고리 정보를 불러오는 함수
   useEffect(() => {
     axios.get(`http://localhost:3001/categories`).then((res) => {
       setCategories(res.data);
     });
   }, []);
 
-  // 그외에 카테고리를 클릭하면 해당 카테고리 페이지로 이동하는 함수
+  // 원하는 카테고리 클릭 시 해당 카테고리 게시물들만 보여주는 함수
   const handleClickCategory = (name) => {
     setSelectedCategory(name);
     navigate(`/main?category=${name}`);

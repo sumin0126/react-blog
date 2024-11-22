@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 
 import PostList from 'components/list/post/PostList';
 import Navbar from 'components/Navbar';
-import { CATEGORY } from 'constants/navbar';
 
 /**
  * @description 홈 컴포넌트
@@ -36,8 +35,9 @@ const Home = () => {
 
   return (
     <>
-      {/* 블로그 글 목록 */}
       <Navbar />
+
+      {/* 블로그 글 목록 */}
       <PostList posts={posts} />
     </>
   );

@@ -10,9 +10,10 @@ import ConfirmModal from 'components/modal/ConfirmModal';
  * @param author - 댓글 작성자
  * @param createdAt - 댓글 만든 날짜
  * @param content - 댓글 내용
+ * @param getComments - 댓글들
  */
 const CommentItem = (props) => {
-  const { id, author, createdAt, content } = props;
+  const { id, author, createdAt, content, getComments } = props;
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
@@ -23,10 +24,11 @@ const CommentItem = (props) => {
     setModalTitle('댓글을 삭제하시겠습니까?');
   };
 
-  // 휴지통 버튼을 클릭하면 댓글을 삭제해주는 함수
+  // 휴지통 모달 확인버튼을 클릭하면 댓글을 삭제해주는 함수
   const deleteComment = () => {
     axios.delete(`http://localhost:3001/comments/${id}`).then(() => {
       setIsOpenModal(false);
+      getComments();
     });
   };
 

@@ -4,51 +4,36 @@
   top: 100px;
   display: flex;
   flex-direction: column;
-  padding: 40px 30px;
-  border-right: 1px solid #d7d7d7;
+  padding: 60px 40px;
+  border-right: 1px solid #eee;
 }
 
 .postAll {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #d7d7d7;
+  border-bottom: 1px solid #eee;
   padding-bottom: 14px;
-}
-
-.postAll i {
-  margin-right: 10px;
-  font-size: 14px;
-  color: #c5c5c5;
-}
-
-.postAll .arrow-icon {
-  display: none;
 }
 
 .postAll p {
   font-size: 14px;
-  color: #999;
+  color: #333;
   margin: 0;
   cursor: pointer;
+  font-weight: 500;
 }
 
-.postAll:hover p,
-.postAll:hover i {
-  color: #555;
-}
-
-.postAll:hover .file-icon {
+.postAll .file-icon {
   display: none;
 }
 
-.postAll:hover .arrow-icon {
-  display: block;
-  color: #555;
+.postAll .arrow-icon {
+  color: #333;
   font-size: 10px;
 }
 
 .detailPost_wrapper {
-  border-bottom: 1px solid #d7d7d7;
+  border-bottom: 1px solid #eee;
   padding-top: 14px;
   padding-bottom: 14px;
 }
@@ -82,18 +67,18 @@
 
 .detailPost_wrapper .category-wrapper:hover .arrow-icon {
   display: block;
-  color: #555;
+  color: #333;
   font-size: 10px;
 }
 
 .detailPost_wrapper .category-wrapper:hover p {
-  color: #555;
+  color: #333;
 }
 
 .category-wrapper.active p,
 .postAll.active p {
-  font-weight: bold;
-  color: #555;
+  font-weight: 500;
+  color: #333;
 }
 .category-wrapper.active .file-icon,
 .postAll.active .file-icon {
@@ -103,6 +88,6 @@
 .category-wrapper.active .arrow-icon,
 .postAll.active .arrow-icon {
   display: block;
-  color: #555;
+  color: #333;
   font-size: 10px;
 }

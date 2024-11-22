@@ -55,6 +55,14 @@
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+.category-dropdown .food,
+.category-dropdown .travel,
+.category-dropdown .world-travel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .category-dropdown p {
   font-size: 14px;
   color: #999;
