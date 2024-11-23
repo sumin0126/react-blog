@@ -8,19 +8,30 @@ import NewComment from 'components/list/comment/NewComment';
 import ConfirmModal from 'components/modal/ConfirmModal';
 import { CATEGORY } from 'constants/navbar';
 
+import { PATHNAME } from 'constants/common';
+
 /**
  * @description 블로그 글 상세정보 컴포넌트
  */
 const PostDetail = () => {
   const [post, setPost] = useState();
+  const [user, setUser] = useState([]);
   const [comments, setComments] = useState([]);
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [like, setLike] = useState(0);
-  const [isLike, setIsLike] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const isLiked = user[0]?.likedPost.includes(id);
+
+  // 댓글들의 정보를 불러오는 함수
+  const getComments = () => {
+    axios
+      .get(`http://localhost:3001/comments?postId=${id}`)
+      .then((res) => setComments(res.data));
+  };
 
   // 블로그 글 상세 정보를 불러오는 함수
   useEffect(() => {
@@ -30,19 +41,15 @@ const PostDetail = () => {
         setLike(res.data.like);
       });
     };
+
+    const getUserInfo = () => {
+      axios.get('http://localhost:3001/users').then((res) => setUser(res.data));
+    };
+
     getPostDetail();
-  }, []);
-
-  // 댓글들의 정보를 불러오는 함수
-  const getComments = () => {
-    axios
-      .get(`http://localhost:3001/comments?postId=${id}`)
-      .then((res) => setComments(res.data));
-  };
-
-  useEffect(() => {
+    getUserInfo();
     getComments();
-  }, []);
+  }, [like]);
 
   // 수정 버튼을 클릭하면 수정 페이지로 이동하는 함수
   const handleClickEdit = () => {
@@ -52,7 +59,7 @@ const PostDetail = () => {
   // 서버에 삭제 요청을 보내는 함수
   const deletePost = () => {
     axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
-      navigate('/main');
+      navigate(PATHNAME.MAIN);
     });
   };
 
@@ -65,10 +72,8 @@ const PostDetail = () => {
   // 하트아이콘을 클릭하면 like와 post 상태를 동시에 업데이트해주고
   // 변경된 좋아요 수를 서버에 업데이트 해주는 함수
   const handleClickLike = () => {
-    const newLikeCount = isLike ? like - 1 : like + 1;
+    const newLikeCount = isLiked ? like - 1 : like + 1;
     setLike(newLikeCount);
-    setPost({ ...post, like: newLikeCount });
-    setIsLike(!isLike);
 
     axios
       .put(`http://localhost:3001/posts/${id}`, {
@@ -76,6 +81,20 @@ const PostDetail = () => {
         like: newLikeCount,
       })
       .then(() => console.log('서버에 좋아요 수가 업데이트 되었습니다 !'));
+
+    let newLikedPost;
+    const userId = user[0].id;
+
+    if (isLiked) {
+      newLikedPost = user[0].likedPost.filter((post) => post !== id);
+    } else {
+      newLikedPost = user[0].likedPost.concat(id);
+    }
+
+    axios.put(`http://localhost:3001/users/${userId}`, {
+      ...user[0],
+      likedPost: newLikedPost,
+    });
   };
 
   // 카테고리 클릭 시 해당 카테고리의 게시물만 보여주는 함수
@@ -120,7 +139,7 @@ const PostDetail = () => {
               <div className="info-date">{post.date}</div>
               <div className="info-like" onClick={handleClickLike}>
                 <i
-                  className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
+                  className={`fa-heart ${isLiked ? 'fa-solid' : 'fa-regular'}`}
                 ></i>
                 <div>{post.like}</div>
               </div>

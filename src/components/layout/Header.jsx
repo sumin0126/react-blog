@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import { PATHNAME } from 'constants/common';
+
 /**
  * @description 헤더
  */
@@ -11,12 +13,12 @@ const Header = () => {
 
   // 로고를 클릭하면 홈 페이지로 이동하는 함수
   const handleClickLogo = () => {
-    navigate('/main');
+    navigate(PATHNAME.MAIN);
   };
 
   // 글쓰기 버튼을 클릭하면 글작성 페이지로 이동하는 함수
   const handleClickWriting = () => {
-    navigate('/post/new');
+    navigate(PATHNAME.POST_NEW);
   };
 
   // 화면 클릭 시 최근검색어 창을 닫아주는 함수
@@ -38,7 +40,7 @@ const Header = () => {
     setIsOpenSearch(true);
   };
 
-  const isHome = location.pathname === '/main';
+  const isHome = location.pathname === PATHNAME.MAIN;
 
   return (
     <header>
