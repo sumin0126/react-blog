@@ -8,9 +8,10 @@ import AlertModal from 'components/modal/AlertModal';
  * @description 새 댓글 컴포넌트
  *
  * @param postId - 포스트 id
+ * @param getComments - 댓글들
  */
 const NewComment = (props) => {
-  const { postId } = props;
+  const { postId, getComments } = props;
 
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -40,6 +41,7 @@ const NewComment = (props) => {
           setModalTitle('댓글 등록이 완료 되었습니다 !');
           setIsOpenModal(true);
           setComment({ author: '', content: '' });
+          getComments();
         });
     } else {
       setModalTitle('이름과 내용을 입력하세요 !');

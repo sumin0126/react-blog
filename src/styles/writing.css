@@ -1,7 +1,7 @@
 .writing-wrapper {
   background-color: #f9f9f9;
   width: 100%;
-  min-height: 1400px;
+  min-height: 1500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -10,33 +10,39 @@
 
 .writing-wrapper > .category {
   position: absolute;
-  top: 90px;
-  left: 20%;
-  width: auto;
+  top: 130px;
+  right: 220px;
+  width: 10%;
   height: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 14px;
 }
 
 .category p {
-  color: 222;
+  color: #999;
   margin: 0;
   margin-right: 4px;
 }
 
 .category .bottom-arrow {
-  color: 999;
+  color: #a0a0a0;
   padding-bottom: 10px;
+}
+
+.writing-wrapper > .category:hover {
+  background-color: #e6e6e6;
 }
 
 .category-dropdown {
   position: absolute;
-  top: 120px;
-  left: 20%;
-  width: 200px;
+  top: 170px;
+  right: 220px;
+  width: 180px;
   height: 100px;
   display: flex;
   flex-direction: column;
@@ -47,6 +53,14 @@
   padding: 10px 14px;
   border-radius: 10px;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.category-dropdown .food,
+.category-dropdown .travel,
+.category-dropdown .world-travel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .category-dropdown p {
@@ -62,12 +76,7 @@
   color: #c5c5c5;
 }
 
-.category-dropdown .food:hover i,
-.category-dropdown .food:hover p,
-.category-dropdown .travel:hover i,
-.category-dropdown .travel:hover p,
-.category-dropdown .world-travel:hover i,
-.category-dropdown .world-travel:hover p {
+.category-dropdown .category-wrapper:hover i {
   color: #555;
 }
 
@@ -77,10 +86,11 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #fff;
-  width: 90%;
+  width: 70%;
   min-height: 1200px;
-  border-radius: 30px;
-  margin-top: 50px;
+  border-radius: 20px;
+  margin-top: 100px;
+  margin-bottom: 40px;
   border: 1px solid #eee;
   box-shadow: 0 0px 5px #e1e1e1;
 }
@@ -88,14 +98,28 @@
 .text-wrapper > .title {
   width: 80%;
   height: 100px;
-  margin-top: 50px;
+  margin-top: 60px;
   border: none;
   border-bottom: 1px solid #eee;
-  padding-left: 20px;
+  font-size: 24px;
+  color: #555;
+  font-weight: 500;
+}
+
+.text-wrapper .content {
+  min-height: 900px;
+  font-size: 20px;
+  color: #555;
+  height: 100px;
+  width: 80%;
+  border: none;
+  padding-top: 40px;
+  font-weight: 400;
+  resize: none;
 }
 
 .text-wrapper > .title::placeholder {
-  font-size: 30px;
+  font-size: 24px;
   color: #c8c8c8;
 }
 
@@ -107,13 +131,6 @@
 .text-wrapper > .title:hover,
 .content:hover {
   cursor: pointer;
-}
-
-.text-wrapper > .content {
-  width: 80%;
-  border: none;
-  padding-left: 20px;
-  padding-top: 50px;
 }
 
 .text-wrapper > .content::placeholder {
@@ -140,6 +157,7 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  margin: 40px 0;
 }
 
 .uploadBtn:hover,

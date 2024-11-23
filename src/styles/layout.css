@@ -77,6 +77,33 @@
   color: #c2c2c2;
 }
 
+.search-dropdown {
+  background-color: #fff;
+  width: 220px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 10px;
+  position: absolute;
+  top: 64px;
+  right: 120px;
+  padding: 20px 20px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-dropdown .info {
+  width: 100%;
+  color: #555;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 14px;
+}
+
 .writingBtn {
   background-color: #333;
   border-radius: 20px;
@@ -97,14 +124,13 @@
 }
 
 .main {
-  width: 70%;
-  margin: auto;
+  display: flex;
 }
 
 .footerWrapper {
   height: 100px;
   border-top: 1px solid #eee;
-  margin-top: 60px;
+  /* margin-top: 60px; */
   padding-top: 20px;
   display: flex;
   justify-content: center;

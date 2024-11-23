@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
-import Navbar from 'components/Navbar';
 
 /**
  * @description 헤더
@@ -9,11 +7,11 @@ import Navbar from 'components/Navbar';
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [openNavbar, setOpenNavbar] = useState(false);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   // 로고를 클릭하면 홈 페이지로 이동하는 함수
   const handleClickLogo = () => {
-    navigate('/');
+    navigate('/main');
   };
 
   // 글쓰기 버튼을 클릭하면 글작성 페이지로 이동하는 함수
@@ -21,39 +19,45 @@ const Header = () => {
     navigate('/post/new');
   };
 
-  // 메뉴 버튼을 클릭하면 네비게이션바가 열리고 닫히는 함수
-  const handleClickBars = () => {
-    const navBar = document.querySelector('.navbar_wrapper');
-    const navBarBg = document.querySelector('.navbarBg');
+  // 화면 클릭 시 최근검색어 창을 닫아주는 함수
+  useEffect(() => {
+    const closeSearchInput = () => {
+      setIsOpenSearch(false);
+    };
 
-    if (openNavbar === false) {
-      navBar.classList.add('active');
-      navBarBg.classList.add('active');
-      setOpenNavbar(true);
-    } else {
-      navBar.classList.remove('active');
-      navBarBg.classList.remove('active');
-      setOpenNavbar(false);
-    }
+    document.addEventListener('click', closeSearchInput);
+
+    return () => {
+      document.removeEventListener('click', closeSearchInput);
+    };
+  }, []);
+
+  // 검색창을 클릭하면 최근검색어 모달이 나오는 함수
+  const handleClickSearch = (e) => {
+    e.stopPropagation();
+    setIsOpenSearch(true);
   };
 
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/main';
 
   return (
     <header>
       <div className="headerBar">
         <div className="header_left">
-          {isHome && (
-            <i className="fa-solid fa-bars" onClick={handleClickBars}></i>
-          )}
-          <h2 onClick={handleClickLogo}>smooth.log</h2>
+          <h2 onClick={handleClickLogo}>smooth.log ᴗ̈</h2>
         </div>
 
         {isHome && (
           <div className="header_right">
-            <div className="searchInput">
+            <div className="searchInput" onClick={handleClickSearch}>
               <i className="fa-solid fa-search"></i>
               <input placeholder="검색어를 입력하세요"></input>
+
+              {isOpenSearch && (
+                <div className="search-dropdown">
+                  <p className="info">최근 검색어</p>
+                </div>
+              )}
             </div>
 
             <div className="writingBtn" onClick={handleClickWriting}>
@@ -62,7 +66,6 @@ const Header = () => {
           </div>
         )}
       </div>
-      <Navbar />
     </header>
   );
 };

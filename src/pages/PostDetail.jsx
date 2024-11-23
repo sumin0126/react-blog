@@ -6,13 +6,14 @@ import CommentList from 'components/list/comment/CommentList';
 import img2 from 'assets/image/img2.jpg';
 import NewComment from 'components/list/comment/NewComment';
 import ConfirmModal from 'components/modal/ConfirmModal';
+import { CATEGORY } from 'constants/navbar';
 
 /**
  * @description 블로그 글 상세정보 컴포넌트
  */
 const PostDetail = () => {
   const [post, setPost] = useState();
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState([]);
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [like, setLike] = useState(0);
@@ -29,15 +30,17 @@ const PostDetail = () => {
         setLike(res.data.like);
       });
     };
-
-    // 댓글들의 정보를 불러오는 함수
-    const getComments = () => {
-      axios
-        .get(`http://localhost:3001/comments?postId=${id}`)
-        .then((res) => setComments(res.data));
-    };
-
     getPostDetail();
+  }, []);
+
+  // 댓글들의 정보를 불러오는 함수
+  const getComments = () => {
+    axios
+      .get(`http://localhost:3001/comments?postId=${id}`)
+      .then((res) => setComments(res.data));
+  };
+
+  useEffect(() => {
     getComments();
   }, []);
 
@@ -49,7 +52,7 @@ const PostDetail = () => {
   // 서버에 삭제 요청을 보내는 함수
   const deletePost = () => {
     axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
-      navigate('/');
+      navigate('/main');
     });
   };
 
@@ -75,14 +78,14 @@ const PostDetail = () => {
       .then(() => console.log('서버에 좋아요 수가 업데이트 되었습니다 !'));
   };
 
-  // 카테고리를 클릭하면 해당 카테고리 페이지로 이동하는 함수
-  const handleClickCategory = () => {
+  // 카테고리 클릭 시 해당 카테고리의 게시물만 보여주는 함수
+  const handleClickCategory = (name) => {
     if (post.category) {
-      navigate(`/categories/${post.category}`);
+      navigate(`/main?category=${name}`);
     }
   };
 
-  if (!post || !comments) {
+  if (!post) {
     return;
   }
 
@@ -102,46 +105,52 @@ const PostDetail = () => {
         />
       )}
       {/* 포스트 헤더 영역 */}
-      <section className="post-header">
-        <p className="post-category" onClick={handleClickCategory}>
-          {post.category}
-        </p>
-        <h2 className="post-title">{post.title}</h2>
+      <section className="post-wrapper">
+        <section className="post-header">
+          <p
+            className="post-category"
+            onClick={() => handleClickCategory(post.category)}
+          >
+            {CATEGORY[post.category]}
+          </p>
+          <h2 className="post-title">{post.title}</h2>
 
-        <div className="post-info">
-          <div className="info-left">
-            <div className="info-date">{post.date}</div>
-            <div className="info-like" onClick={handleClickLike}>
-              <i
-                className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
-              ></i>
-              <div>{post.like}</div>
+          <div className="post-info">
+            <div className="info-left">
+              <div className="info-date">{post.date}</div>
+              <div className="info-like" onClick={handleClickLike}>
+                <i
+                  className={`fa-heart ${isLike ? 'fa-solid' : 'fa-regular'}`}
+                ></i>
+                <div>{post.like}</div>
+              </div>
+            </div>
+
+            <div className="info-right">
+              <button className="info-edit" onClick={handleClickEdit}>
+                수정
+              </button>
+              <button className="info-cancel" onClick={handleClickPostCancel}>
+                삭제
+              </button>
             </div>
           </div>
+        </section>
 
-          <div className="info-right">
-            <button className="info-edit" onClick={handleClickEdit}>
-              수정
-            </button>
-            <button className="info-cancel" onClick={handleClickPostCancel}>
-              삭제
-            </button>
+        {/* 포스트 콘텐트 영역 */}
+        <section className="post-content">
+          <div className="content-main-img">
+            <img src={img2} alt="picture1" width="auto" />
           </div>
-        </div>
+          <div className="content-main-text">{post.content}</div>
+        </section>
+
+        {/* 댓글 목록 컴포넌트 */}
+        <CommentList comments={comments} getComments={getComments} />
+
+        {/* 새 댓글 컴포넌트 */}
+        <NewComment postId={id} getComments={getComments} />
       </section>
-
-      <section className="post-content">
-        <div className="content-main-img">
-          <img src={img2} alt="picture1" width="auto" />
-        </div>
-        <div className="content-main-text">{post.content}</div>
-      </section>
-
-      {/* 댓글 목록 컴포넌트 */}
-      <CommentList comments={comments} />
-
-      {/* 새 댓글 컴포넌트 */}
-      <NewComment postId={id} />
     </>
   );
 };
