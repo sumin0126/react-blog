@@ -35,7 +35,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar category={category} />
 
       {/* 블로그 글 목록 */}
       <PostList posts={posts} />

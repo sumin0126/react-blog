@@ -7,10 +7,11 @@ import { CATEGORY } from 'constants/navbar';
 /**
  * @description 네비바 컴포넌트
  */
-const Navbar = () => {
+const Navbar = (props) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
 
+  const { category } = props;
   const navigate = useNavigate();
 
   // 카테고리 정보를 불러오는 함수
@@ -18,6 +19,10 @@ const Navbar = () => {
     axios.get(`http://localhost:3001/categories`).then((res) => {
       setCategories(res.data);
     });
+
+    if (category) {
+      setSelectedCategory(category);
+    }
   }, []);
 
   // 원하는 카테고리 클릭 시 해당 카테고리 게시물들만 보여주는 함수
