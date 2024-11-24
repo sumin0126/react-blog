@@ -55,18 +55,25 @@
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.category-dropdown .food,
-.category-dropdown .travel,
-.category-dropdown .world-travel {
+.category-title-box {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  width: 90%;
+}
+
+.category-title-box:hover {
+  border-bottom: 1px solid #dbdbdb;
 }
 
 .category-dropdown p {
   font-size: 14px;
-  color: #999;
-  margin: 8px 0;
+  color: #aeaeae;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -74,10 +81,6 @@
   margin-right: 10px;
   font-size: 14px;
   color: #c5c5c5;
-}
-
-.category-dropdown .category-wrapper:hover i {
-  color: #555;
 }
 
 .text-wrapper {

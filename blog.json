@@ -6,7 +6,7 @@
       "title": "100% 유기농 밀가루로만 만든 병점 베이커리 맛집 카페 '빵쌤'",
       "content": "빵 종류도 다양하고 너어무 맛있는 베이커리 맛집 빵쌤 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 !! 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구 어쩌구 저쩌구",
       "date": "2024. 10. 31",
-      "like": 115,
+      "like": 116,
       "thumbnail": ""
     },
     {
@@ -19,57 +19,39 @@
       "thumbnail": ""
     },
     {
-      "id": "a2d8",
-      "category": "food",
-      "title": "포스팅1",
-      "content": "테스트",
-      "date": "2024. 11. 18",
+      "id": "422d",
+      "category": "travel",
+      "title": "국내 여행 (1)",
+      "content": "국내 여행 포스팅",
+      "date": "2024. 11. 23",
       "like": 1,
       "thumbnail": ""
     },
     {
-      "id": "74e7",
+      "id": "84b7",
       "category": "travel",
-      "title": "포스팅2",
-      "content": "테스트",
-      "date": "2024. 11. 18",
+      "title": "국내 여행 (2)",
+      "content": "국내 여행 포스팅",
+      "date": "2024. 11. 23",
       "like": 0,
       "thumbnail": ""
     },
     {
-      "id": "db68",
+      "id": "7f57",
       "category": "worldTravel",
-      "title": "포스팅3",
-      "content": "테스트",
-      "date": "2024. 11. 18",
-      "like": 2,
-      "thumbnail": ""
-    },
-    {
-      "id": "73fb",
-      "category": "맛집 탐험",
-      "title": "포스팅4",
-      "content": "테스트",
-      "date": "2024. 11. 18",
+      "title": "해외 여행 (1)",
+      "content": "해외 여행 포스팅",
+      "date": "2024. 11. 23",
       "like": 0,
       "thumbnail": ""
     },
     {
-      "id": "87a6",
-      "category": "travel",
-      "title": "포스팅5",
-      "content": "테스트",
-      "date": "2024. 11. 18",
+      "id": "cfad",
+      "category": "worldTravel",
+      "title": "해외 여행 (2)",
+      "content": "해외 여행 포스팅",
+      "date": "2024. 11. 23",
       "like": 1,
-      "thumbnail": ""
-    },
-    {
-      "id": "b20d",
-      "category": "worldTravel",
-      "title": "포스팅6",
-      "content": "테스트",
-      "date": "2024. 11. 18",
-      "like": 2,
       "thumbnail": ""
     }
   ],
@@ -82,11 +64,18 @@
       "createdAt": "2024. 10. 31"
     },
     {
-      "id": "0cbc",
-      "postId": "b20d",
-      "author": "ㅎㅎㅎ",
-      "content": "ㅎㅎㅎㅎㅎ",
-      "createdAt": "2024. 11. 22"
+      "id": "dcf0",
+      "postId": "422d",
+      "author": "국내 여행(1) 댓글",
+      "content": "국내여행 댓글",
+      "createdAt": "2024. 11. 23"
+    },
+    {
+      "id": "775a",
+      "postId": "84b7",
+      "author": "국내 여행(2) 댓글",
+      "content": "댓글",
+      "createdAt": "2024. 11. 23"
     }
   ],
   "categories": [
@@ -113,7 +102,11 @@
       "name": "수민",
       "likedPost": [
         "2",
-        "a2d8"
+        "a2d8",
+        "1",
+        "73fb",
+        "422d",
+        "cfad"
       ]
     }
   ]

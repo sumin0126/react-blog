@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
+
 import { CATEGORY } from 'constants/navbar';
 
 /**
  * @description 네비바 컴포넌트
+ *
+ * @param category -  Home 컴포넌트에서 받아오는 카테고리 데이터
  */
 const Navbar = (props) => {
+  const { category } = props;
+
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
-
-  const { category } = props;
   const navigate = useNavigate();
 
   // 카테고리 정보를 불러오는 함수
@@ -34,6 +36,7 @@ const Navbar = (props) => {
   return (
     <>
       <section className="navbar_wrapper">
+        {/* 전체보기 카테고리 */}
         <div
           className={`postAll${selectedCategory === 'all' ? ' active' : ''}`}
         >
@@ -49,6 +52,7 @@ const Navbar = (props) => {
             }
 
             return (
+              // 그 외 나머지 카테고리
               <div
                 className={`category-wrapper${selectedCategory === category.categoryName ? ' active' : ''}`}
                 onClick={() => handleClickCategory(category.categoryName)}

@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import { getDate } from 'utils/common';
 import AlertModal from 'components/modal/AlertModal';
+import { REVERSE_CATEGORY } from 'constants/navbar2';
+import { CATEGORY } from 'constants/navbar';
+import { PATHNAME } from 'constants/common';
 
 /**
  * @description - 글 수정 및 등록 컴포넌트
@@ -21,13 +24,14 @@ const Writing = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenCategory, setIsOpenCategory] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
 
+  // 새 글 등록인지, 수정인지 확인하고 글 상세정보를 불러오는 함수
   useEffect(() => {
-    // 새로운 글 등록인지, 수정인지 확인하고 글 상세정보를 불러오는 함수
     if (location.pathname === '/post/new') {
       setIsEdit(false);
     } else {
@@ -53,11 +57,12 @@ const Writing = () => {
   // 클릭한 카테고리를 새 category로 저장해주는 함수
   const handleChangeCategory = (e) => {
     const newCategory = e.target.textContent;
-    setPost({ ...post, category: newCategory });
+    setPost({ ...post, category: REVERSE_CATEGORY[newCategory] });
   };
 
   // 수정된 글 저장 및 완료 모달 띄워주는 함수
   // 등록된 글 전송 및 완료 모달 띄워주는 함수
+  // 카테고리 미선택시 모달 띄워주는 함수
   const handleUpload = () => {
     if (post.title === '' || post.content === '') {
       setModalTitle('제목과 내용을 입력하세요 !');
@@ -71,10 +76,18 @@ const Writing = () => {
         setIsOpenModal(true);
       });
     } else {
-      axios.post('http://localhost:3001/posts', post).then(() => {
-        setModalTitle('등록이 완료 되었습니다 !');
+      const categoryTitle = document.querySelector('.category');
+
+      if (categoryTitle.textContent === '카테고리') {
+        setModalTitle('카테고리를 선택하세요 !');
         setIsOpenModal(true);
-      });
+        navigate(PATHNAME.POST_NEW);
+      } else {
+        axios.post('http://localhost:3001/posts', post).then(() => {
+          setModalTitle('등록이 완료 되었습니다 !');
+          setIsOpenModal(true);
+        });
+      }
     }
   };
 
@@ -83,14 +96,31 @@ const Writing = () => {
     navigate(-1);
   };
 
-  // 카테고리 버튼을 누르면 카테고리 메뉴가 열리고 닫히는 함수
-  const handleClickCategory = () => {
-    if (isOpenCategory === false) {
-      setIsOpenCategory(true);
-    } else {
-      setIsOpenCategory(false);
-    }
+  // 카테고리 정보를 불러오는 함수
+  useEffect(() => {
+    axios.get(`http://localhost:3001/categories`).then((res) => {
+      setCategories(res.data);
+    });
+  }, []);
+
+  // 카테고리 버튼을 누르면 카테고리 메뉴가 열리는 함수
+  const handleClickCategory = (e) => {
+    e.stopPropagation();
+    setIsOpenCategory(true);
   };
+
+  // 화면 클릭 시 카테고리 창을 닫아주는 함수
+  useEffect(() => {
+    const closeCategory = () => {
+      setIsOpenCategory(false);
+    };
+
+    document.addEventListener('click', closeCategory);
+
+    return () => {
+      document.removeEventListener('click', closeCategory);
+    };
+  }, []);
 
   // 카테고리 메뉴에서 원하는 카테고리를 선택하면 화면에 보여주는 함수
   const handleClickSelectCategory = (e) => {
@@ -122,18 +152,18 @@ const Writing = () => {
 
         {isOpenCategory && (
           <div className="category-dropdown" onClick={handleChangeCategory}>
-            <div className="food" onClick={handleClickSelectCategory}>
-              <i className="fa-regular fa-file file-icon"></i>
-              <p>맛집 탐험</p>
-            </div>
-            <div className="travel" onClick={handleClickSelectCategory}>
-              <i className="fa-regular fa-file file-icon"></i>
-              <p>국내 여행</p>
-            </div>
-            <div className="world-travel" onClick={handleClickSelectCategory}>
-              <i className="fa-regular fa-file file-icon"></i>
-              <p>해외 여행</p>
-            </div>
+            {categories
+              .filter((category) => category.categoryName !== 'all')
+              .map((category) => (
+                <div
+                  className="category-title-box"
+                  onClick={handleClickSelectCategory}
+                  key={category.id}
+                >
+                  <i className="fa-regular fa-file file-icon"></i>
+                  <p>{CATEGORY[category.categoryName]}</p>
+                </div>
+              ))}
           </div>
         )}
 
