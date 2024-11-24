@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { PATHNAME } from 'constants/common';
+import { useRecoilState } from 'recoil';
+import { searchInputState } from 'stores/search';
 
 /**
  * @description 헤더
@@ -10,6 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [searchInput, setSearchInput] = useRecoilState(searchInputState);
 
   // 로고를 클릭하면 홈 페이지로 이동하는 함수
   const handleClickLogo = () => {
@@ -40,6 +44,18 @@ const Header = () => {
     setIsOpenSearch(true);
   };
 
+  // 검색창에 입력하는 값을 상태로 업데이트 해주는 함수
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  // 검색어 입력 후, 엔터키를 누르면 상태를 업데이트해서 재렌더링 해주는 함수
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      setSearchInput(inputValue);
+    }
+  };
+
   const isHome = location.pathname === PATHNAME.MAIN;
 
   return (
@@ -53,7 +69,11 @@ const Header = () => {
           <div className="header_right">
             <div className="searchInput" onClick={handleClickSearch}>
               <i className="fa-solid fa-search"></i>
-              <input placeholder="검색어를 입력하세요"></input>
+              <input
+                placeholder="검색어를 입력하세요"
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+              ></input>
 
               {isOpenSearch && (
                 <div className="search-dropdown">

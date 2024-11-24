@@ -7,7 +7,6 @@ import img2 from 'assets/image/img2.jpg';
 import NewComment from 'components/list/comment/NewComment';
 import ConfirmModal from 'components/modal/ConfirmModal';
 import { CATEGORY } from 'constants/navbar';
-
 import { PATHNAME } from 'constants/common';
 
 /**
@@ -33,7 +32,7 @@ const PostDetail = () => {
       .then((res) => setComments(res.data));
   };
 
-  // 블로그 글 상세 정보를 불러오는 함수
+  // 블로그 글 상세 정보, 좋아요 수, 유저 정보를 불러오는 함수
   useEffect(() => {
     const getPostDetail = () => {
       axios.get(`http://localhost:3001/posts/${id}`).then((res) => {
@@ -82,9 +81,16 @@ const PostDetail = () => {
       })
       .then(() => console.log('서버에 좋아요 수가 업데이트 되었습니다 !'));
 
+    likePostUpdate();
+  };
+
+  // 좋아요 누른 포스트 아이디를 서버에 업데이트 해주는 함수
+  const likePostUpdate = () => {
     let newLikedPost;
     const userId = user[0].id;
 
+    // isLiked가 참이면 -> id를 좋아요 목록에서 제거
+    // isLiked가 거짓이면 -> id를 좋아요 목록에 추가
     if (isLiked) {
       newLikedPost = user[0].likedPost.filter((post) => post !== id);
     } else {
@@ -123,6 +129,7 @@ const PostDetail = () => {
           modalClose={() => setIsOpenModal(false)}
         />
       )}
+
       {/* 포스트 헤더 영역 */}
       <section className="post-wrapper">
         <section className="post-header">
@@ -132,6 +139,7 @@ const PostDetail = () => {
           >
             {CATEGORY[post.category]}
           </p>
+
           <h2 className="post-title">{post.title}</h2>
 
           <div className="post-info">
@@ -156,7 +164,7 @@ const PostDetail = () => {
           </div>
         </section>
 
-        {/* 포스트 콘텐트 영역 */}
+        {/* 포스트 콘텐츠 영역 */}
         <section className="post-content">
           <div className="content-main-img">
             <img src={img2} alt="picture1" width="auto" />
