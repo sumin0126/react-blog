@@ -19,39 +19,93 @@
       "thumbnail": ""
     },
     {
-      "id": "422d",
+      "id": "78a4",
       "category": "travel",
-      "title": "국내 여행 (1)",
-      "content": "국내 여행 포스팅",
-      "date": "2024. 11. 23",
-      "like": 1,
-      "thumbnail": ""
-    },
-    {
-      "id": "84b7",
-      "category": "travel",
-      "title": "국내 여행 (2)",
-      "content": "국내 여행 포스팅",
-      "date": "2024. 11. 23",
+      "title": "국내여행(1)",
+      "content": "내용",
+      "date": "2024. 11. 30",
       "like": 0,
       "thumbnail": ""
     },
     {
-      "id": "7f57",
-      "category": "worldTravel",
-      "title": "해외 여행 (1)",
-      "content": "해외 여행 포스팅",
-      "date": "2024. 11. 23",
+      "id": "1813",
+      "category": "travel",
+      "title": "국내여행(2)",
+      "content": "내용",
+      "date": "2024. 11. 30",
       "like": 0,
       "thumbnail": ""
     },
     {
-      "id": "cfad",
-      "category": "worldTravel",
-      "title": "해외 여행 (2)",
-      "content": "해외 여행 포스팅",
-      "date": "2024. 11. 23",
-      "like": 1,
+      "id": "9549",
+      "category": "travel",
+      "title": "국내여행(3)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "6cec",
+      "category": "travel",
+      "title": "국내여행(4)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "926b",
+      "category": "travel",
+      "title": "국내여행(5)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "7a3a",
+      "category": "travel",
+      "title": "국내여행(6)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "9d70",
+      "category": "food",
+      "title": "맛집탐방(3)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "b92d",
+      "category": "food",
+      "title": "맛집탐방(4)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "65c4",
+      "category": "food",
+      "title": "맛집탐방(5)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
+      "thumbnail": ""
+    },
+    {
+      "id": "fbb6",
+      "category": "food",
+      "title": "맛집탐방(6)",
+      "content": "내용",
+      "date": "2024. 11. 30",
+      "like": 0,
       "thumbnail": ""
     }
   ],
@@ -62,20 +116,6 @@
       "author": "장오",
       "content": "비주얼 미쳤네요,, 넘 맛나보여요👍",
       "createdAt": "2024. 10. 31"
-    },
-    {
-      "id": "dcf0",
-      "postId": "422d",
-      "author": "국내 여행(1) 댓글",
-      "content": "국내여행 댓글",
-      "createdAt": "2024. 11. 23"
-    },
-    {
-      "id": "775a",
-      "postId": "84b7",
-      "author": "국내 여행(2) 댓글",
-      "content": "댓글",
-      "createdAt": "2024. 11. 23"
     }
   ],
   "categories": [
@@ -102,12 +142,58 @@
       "name": "수민",
       "likedPost": [
         "2",
-        "a2d8",
-        "1",
-        "73fb",
-        "422d",
-        "cfad"
+        "1"
       ]
+    }
+  ],
+  "keyWords": [
+    {
+      "id": "6738",
+      "keyWord": "키워드"
+    },
+    {
+      "id": "c40a",
+      "keyWord": "빵쌤"
+    },
+    {
+      "id": "922f",
+      "keyWord": "빵쌤"
+    },
+    {
+      "id": "3eb9",
+      "keyWord": "빵쌤"
+    },
+    {
+      "id": "185d",
+      "keyWord": "카페"
+    },
+    {
+      "id": "82bd",
+      "keyWord": "카페"
+    },
+    {
+      "id": "1d42",
+      "keyWord": "카페"
+    },
+    {
+      "id": "15f2",
+      "keyWord": "카페"
+    },
+    {
+      "id": "a008",
+      "keyWord": "카페"
+    },
+    {
+      "id": "e1d8",
+      "keyWord": "카페"
+    },
+    {
+      "id": "47f2",
+      "keyWord": "카페"
+    },
+    {
+      "id": "deaa",
+      "keyWord": "맛집"
     }
   ]
 }

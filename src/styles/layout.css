@@ -51,7 +51,7 @@
   padding: 0 10px;
 }
 
-.searchInput i {
+.searchInput .fa-search {
   margin-right: 5px;
   color: #dbdbdb;
 }
@@ -73,7 +73,7 @@
   border: 1px solid #c2c2c2;
 }
 
-.searchInput:hover i {
+.searchInput:hover .fa-search {
   color: #c2c2c2;
 }
 
@@ -93,15 +93,35 @@
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.search-dropdown .info {
+.search-dropdown .noti {
   width: 100%;
   color: #555;
   margin: 0;
   padding: 0;
   margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #dcdcdc;
   font-size: 14px;
+}
+
+.keyWordBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.keyWordBox .keyWord {
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.keyWordBox .keyWord-delete {
+  cursor: pointer;
+  font-size: 14px;
+  color: #cccccc;
 }
 
 .writingBtn {
