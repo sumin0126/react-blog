@@ -38,7 +38,7 @@ const Home = () => {
     const newPosts = posts.filter((post) => {
       return post.title.includes(searchInput);
     });
-    console.log(newPosts);
+
     setPosts(newPosts);
   }, [searchInput]);
 

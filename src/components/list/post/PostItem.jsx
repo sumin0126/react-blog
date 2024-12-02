@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import img6 from 'assets/image/img6.jpg';
-
 /**
  * @description 포스트 카드 컴포넌트
  *
@@ -12,7 +10,7 @@ import img6 from 'assets/image/img6.jpg';
  * @param like - 좋아요 개수
  */
 const PostItem = (props) => {
-  const { title, content, date, like } = props;
+  const { title, content, date, like, thumbnail } = props;
 
   const navigate = useNavigate();
 
@@ -34,7 +32,7 @@ const PostItem = (props) => {
 
       <div className="card-right">
         <div className="thumbnail">
-          <img src={img6} alt="picture2" width="auto" />
+          <img src={thumbnail} alt="picture2" width="auto" />
         </div>
       </div>
     </div>

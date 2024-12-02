@@ -91,6 +91,18 @@ const Writing = () => {
     }
   };
 
+  // 썸네일 이미지 업로드
+  const handleUploadImage = (e) => {
+    const file = e.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      setPost({ ...post, thumbnail: fileReader.result });
+    };
+  };
+
   // 취소 버튼을 클릭하면 이전 페이지로 돌아가는 함수
   const handleClickCancel = () => {
     navigate(-1);
@@ -145,6 +157,9 @@ const Writing = () => {
         />
       )}
       <section className="writing-wrapper">
+        <div>
+          <input type="file" accept="image/*" onChange={handleUploadImage} />
+        </div>
         <div className="category" onClick={handleClickCategory}>
           <p className="category-title">카테고리</p>
           <i className="fa-solid fa-sort-down bottom-arrow"></i>
@@ -174,6 +189,15 @@ const Writing = () => {
             value={post.title}
             onChange={handleChangeTitle}
           />
+
+          {post.thumbnail && (
+            <img
+              src={post.thumbnail}
+              alt="thumbnail"
+              width={200}
+              height={200}
+            />
+          )}
 
           <textarea
             className="content"

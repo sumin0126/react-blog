@@ -48,7 +48,7 @@ const Navbar = (props) => {
         <div className="detailPost_wrapper">
           {categories.map((category) => {
             if (category.categoryName === 'all') {
-              return <></>;
+              return null;
             }
 
             return (
