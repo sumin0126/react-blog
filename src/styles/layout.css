@@ -165,3 +165,8 @@
 .footerWrapper > .info > span {
   color: #a1a1a1;
 }
+
+.keyWordBox h5 {
+  font-weight: 400;
+  color: #999;
+}

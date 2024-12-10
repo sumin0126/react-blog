@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import CommentList from 'components/list/comment/CommentList';
-import img2 from 'assets/image/img2.jpg';
 import NewComment from 'components/list/comment/NewComment';
 import ConfirmModal from 'components/modal/ConfirmModal';
 import { CATEGORY } from 'constants/navbar';
@@ -167,7 +166,7 @@ const PostDetail = () => {
         {/* 포스트 콘텐츠 영역 */}
         <section className="post-content">
           <div className="content-main-img">
-            <img src={img2} alt="picture1" width="auto" />
+            <img src={post.thumbnail} alt="picture1" width="auto" />
           </div>
           <div className="content-main-text">{post.content}</div>
         </section>

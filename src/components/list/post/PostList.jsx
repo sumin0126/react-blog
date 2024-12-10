@@ -21,6 +21,7 @@ const PostList = (props) => {
             content={post.content}
             date={post.date}
             like={post.like}
+            thumbnail={post.thumbnail}
           />
         );
       })}

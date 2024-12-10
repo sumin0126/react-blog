@@ -12,6 +12,8 @@ import { searchInputState } from 'stores/search';
  */
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [currentPosts, setCurrentPosts] = useState(5);
+  const [isMorePost, setIsMorePost] = useState(false);
   const [searchParams] = useSearchParams();
   const searchInput = useRecoilValue(searchInputState);
 
@@ -38,9 +40,22 @@ const Home = () => {
     const newPosts = posts.filter((post) => {
       return post.title.includes(searchInput);
     });
-    console.log(newPosts);
+
     setPosts(newPosts);
   }, [searchInput]);
+
+  // 더보기 버튼을 클릭하면 현재 게시글의 상태를 업데이트해주는 함수
+  const handleClickMorePosts = () => {
+    setCurrentPosts(currentPosts + 5);
+  };
+
+  // 현재 페이지에서만 보여줄 게시글의 개수
+  const displayPosts = posts.slice(0, currentPosts);
+
+  // 게시글의 총 수가 5개 이상일때만, 더보기버튼을 화면에 보여주는 함수
+  useEffect(() => {
+    setIsMorePost(posts.length > 5 ? true : false);
+  }, [posts]);
 
   if (!posts) {
     return;
@@ -52,7 +67,14 @@ const Home = () => {
       <Navbar category={category} />
 
       {/* 블로그 글 목록 */}
-      <PostList posts={posts} />
+      <PostList posts={displayPosts} />
+
+      {isMorePost && (
+        <button className="morePostBtn" onClick={handleClickMorePosts}>
+          더보기
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      )}
     </>
   );
 };

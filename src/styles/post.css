@@ -344,3 +344,16 @@
   color: #777;
   font-weight: 500;
 }
+
+.morePostBtn {
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  width: 80px;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.morePostBtn i {
+  margin-left: 5px;
+}
