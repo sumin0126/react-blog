@@ -62,7 +62,9 @@ https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
 
 ### ▸ 네비바 카테고리 탐색
 
-https://github.com/user-attachments/assets/ecaade64-aefa-46d7-9239-023a444dc8f7
+
+https://github.com/user-attachments/assets/4689fa92-16c0-4a8d-9beb-8a894f8a4d5a
+
 
 네비바에 특정 카테고리를 클릭하면 **해당 카테고리에 속한 게시글만 필터링되어 화면에 표시됩니다**
 선택한 카테고리의 게시글이 없을 경우, 게시글 자리에 "게시글이 없어요..."라는 안내 문구가 표시됩니다
