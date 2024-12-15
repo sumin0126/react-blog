@@ -30,9 +30,8 @@ https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
 
 **▸ 사용 기술**
 <br/><br/>
-![html](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![css](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
-![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
 
 **[https://sumin0126.github.io/todos/](https://sumin0126.github.io/todos/)**
 
