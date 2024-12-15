@@ -5,7 +5,8 @@
 <br/>
 
 
-https://github.com/user-attachments/assets/f40627ca-b299-4bbc-b460-0b18a7f34fee
+https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
+
 
 
 
@@ -48,7 +49,9 @@ https://github.com/user-attachments/assets/f40627ca-b299-4bbc-b460-0b18a7f34fee
 
 ### ▸ 키워드 검색 및 최근 검색어 관리
 
-https://github.com/user-attachments/assets/cd7f6206-ac6e-41c4-8899-52d7630a4dac
+
+https://github.com/user-attachments/assets/7d2562ad-efcb-47db-8a0a-381c15a638bd
+
 
 검색창을 클릭하면 최근 검색어 모달이 표시됩니다
 최근검색어는 최대 2개까지 표시되며, 검색 기록이 없을 경우 "최근 검색어가 없습니다"라는 안내 문구가 나타납니다
@@ -67,7 +70,9 @@ https://github.com/user-attachments/assets/ecaade64-aefa-46d7-9239-023a444dc8f7
 
 ### ▸ 게시글 추가 로드
 
-https://github.com/user-attachments/assets/d66f2883-5777-4e43-a4b6-3a836e2cd7ab
+
+https://github.com/user-attachments/assets/2dcaf1f6-c3d3-4400-8fdd-92a42006b61b
+
 
 기본적으로 최대 5개의 게시글만 초기 화면에 로드됩니다
 모든 카테고리의 게시글 합계가 5개 이상일 경우, 마지막 게시글 아래에 "더보기 버튼"이 활성화됩니다
@@ -78,7 +83,9 @@ https://github.com/user-attachments/assets/d66f2883-5777-4e43-a4b6-3a836e2cd7ab
 
 ### ▸ 카테고리 기반의 게시글 필터링
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/fdf8101f-0591-4762-9628-c44ec94ad670
+
 
 게시글 제목 영역의 카테고리를 클릭하면 해당 카테고리의 게시글만 필터링되어 Home 페이지에 표시됩니다
 
@@ -86,7 +93,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ 좋아요 상태 관리 및 카운트 업데이트
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/4c4464fb-eeab-4a9c-b9d6-97cc02b10170
+
 
 해당 게시글의 좋아요 버튼 클릭 시 **빈 하트에서 꽉찬 하트로 변경되고, 좋아요 수가 1씩 증가합니다**
 
@@ -94,7 +103,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ 게시글 수정 페이지 네비게이션
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/47ed5262-b51f-4af1-9e44-77d27eed30d9
+
 
 수정 버튼 클릭 시 **현재 게시글 정보를 유지하며 writing 페이지로 이동**합니다
 
@@ -102,7 +113,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ 댓글 등록 유효성 검사
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/50d6078a-aad6-45bc-9ef7-e8ae4f2a62d6
+
 
 댓글 작성자의 이름 또는 내용이 입력되지 않았을 경우, 댓글 등록 버튼 클릭 시 모달을 통해 알림을 제공합니다
 
@@ -110,7 +123,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ 카테고리 선택 및 게시글 관리
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/d9aea0fb-80a9-4902-a39a-ca602ad64069
+
 
 작성 중인 게시글을 특정 카테고리로 분류할 수 있도록 선택 영역을 제공합니다
 
@@ -118,7 +133,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ content에 이미지 삽입
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/a880aad6-1b42-4847-ae52-3d115e9ecba2
+
 
 파일 첨부 버튼을 통해 이미지를 업로드 할 수 있으며, 선택한 이미지가 내용 입력 창에 삽입됩니다
 
@@ -126,7 +143,9 @@ https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
 
 ### ▸ 입력값 유효성 검사
 
-https://github.com/user-attachments/assets/d68a1949-dd0b-434f-be56-9d19d96d9c71
+
+https://github.com/user-attachments/assets/70ac4254-345f-43e2-b70b-2574768a639c
+
 
 제목, 내용 또는 카테고리가 비어있을 경우 모달을 통해 알림을 제공합니다
 
