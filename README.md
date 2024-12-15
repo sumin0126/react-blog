@@ -138,7 +138,7 @@ https://github.com/user-attachments/assets/d9aea0fb-80a9-4902-a39a-ca602ad64069
 https://github.com/user-attachments/assets/a880aad6-1b42-4847-ae52-3d115e9ecba2
 
 
-파일 첨부 버튼을 통해 이미지를 업로드 할 수 있으며, 선택한 이미지가 내용 입력 창에 삽입됩니다
+파일 찾기 버튼을 통해 이미지를 업로드 할 수 있으며, 선택한 이미지가 내용 입력 창에 삽입됩니다
 
 <br/><br/><br/>
 
