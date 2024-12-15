@@ -35,6 +35,7 @@ https://github.com/user-attachments/assets/99842350-9687-4404-b75a-25c266d547ee
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
 
 **[https://sumin0126.github.io/todos/](https://sumin0126.github.io/todos/)**
+
 <br/><br/><br/>
 
 ## ✏️ 프로젝트 설명
