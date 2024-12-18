@@ -34,8 +34,8 @@ const Navbar = (props) => {
   };
 
   return (
-    <>
-      <section className="navbar_wrapper">
+    <section className="navbar_container">
+      <div className="navbar_wrapper">
         {/* 전체보기 카테고리 */}
         <div
           className={`postAll${selectedCategory === 'all' ? ' active' : ''}`}
@@ -65,8 +65,8 @@ const Navbar = (props) => {
             );
           })}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

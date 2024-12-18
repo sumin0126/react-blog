@@ -66,6 +66,10 @@ const Header = () => {
 
   // 검색어 입력 후, 엔터키를 누르면 상태를 업데이트해서 재렌더링 해주는 함수
   const handleKeyDown = (e) => {
+    if (e.nativeEvent.isComposing) {
+      return;
+    }
+
     if (e.key === 'Enter') {
       axios
         .post('http://localhost:3001/keyWords', { keyWord: inputValue })
@@ -111,11 +115,15 @@ const Header = () => {
                     {prevKeyWords.length > 0 ? (
                       prevKeyWords.map((keyword) => (
                         <React.Fragment key={keyword.id}>
-                          <p className="keyWord">{keyword.keyWord}</p>
-                          <i
-                            className="fa-solid fa-xmark keyWord-delete"
-                            onClick={() => handleClickKeyWordDelete(keyword.id)}
-                          ></i>
+                          <div className="keyword-wrapper">
+                            <p className="keyWord">{keyword.keyWord}</p>
+                            <i
+                              className="fa-solid fa-xmark keyWord-delete"
+                              onClick={() =>
+                                handleClickKeyWordDelete(keyword.id)
+                              }
+                            ></i>
+                          </div>
                         </React.Fragment>
                       ))
                     ) : (
