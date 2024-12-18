@@ -23,7 +23,7 @@ const ConfirmModal = (props) => {
       <div className="modal-popup">
         <div className="modal-header-wrapper">
           <p>알림</p>
-          <i class="fa-solid fa-x" onClick={modalClose}></i>
+          <i className="fa-solid fa-x" onClick={modalClose}></i>
         </div>
         <h3>{title}</h3>
         <div className="confirm-button-wrapper">

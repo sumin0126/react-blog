@@ -69,20 +69,19 @@ const Writing = () => {
       return null;
     }
 
+    if (!post.category) {
+      createModal('카테고리를 선택하세요 !');
+      return;
+    }
+
     if (isEdit) {
       axios.put(`http://localhost:3001/posts/${id}`, post).then(() => {
         createModal('수정이 완료되었습니다 !');
       });
     } else {
-      const categoryTitle = document.querySelector('.category');
-
-      if (categoryTitle.textContent === '카테고리') {
-        createModal('카테고리를 선택하세요 !');
-      } else {
-        axios.post('http://localhost:3001/posts', post).then(() => {
-          createModal('등록이 완료되었습니다 !');
-        });
-      }
+      axios.post('http://localhost:3001/posts', post).then(() => {
+        createModal('등록이 완료되었습니다 !');
+      });
     }
   };
 
@@ -133,9 +132,8 @@ const Writing = () => {
           completeText="확인"
           onClickComplete={() => {
             setIsOpenModal(false);
-            {
-              (modalTitle.includes('수정') || modalTitle.includes('등록')) &&
-                navigate(-1);
+            if (modalTitle.includes('수정') || modalTitle.includes('등록')) {
+              navigate(-1);
             }
           }}
           modalClose={() => setIsOpenModal(false)}

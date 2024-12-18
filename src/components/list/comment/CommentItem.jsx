@@ -54,7 +54,7 @@ const CommentItem = (props) => {
           <div className="comment-header-right">
             <div className="comment-createdAt">{createdAt}</div>
             <i
-              class="fa-solid fa-trash-can"
+              className="fa-solid fa-trash-can"
               onClick={handleClickCommentDelete}
             ></i>
           </div>
